@@ -12,7 +12,7 @@ module MCollective
 
         fact_command = Config.instance.pluginconf.fetch("command", nil) || raise("plugin.command is not defined")
         fact_timeout = Config.instance.pluginconf.fetch("command.timeout", nil).to_i || 10
-        Log.debug("Loading facts using #{fact_command} with timeout #{fact_timeout}")
+        Log.info("Loading facts using #{fact_command} with timeout #{fact_timeout}")
 
         facts = {}
     
@@ -30,7 +30,7 @@ module MCollective
         end
         time = (Time.now.to_i - time)
 
-        Log.info("Loaded #{facts.keys.size} facts using #{fact_command} in #{time} seconds")
+        Log.debug("Loaded #{facts.keys.size} facts using #{fact_command} in #{time} seconds")
         facts
       end
     end
